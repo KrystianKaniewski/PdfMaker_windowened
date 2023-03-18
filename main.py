@@ -10,11 +10,10 @@ def AddFiles():  # adding any files in three formats
                                             filetypes=[('jpg', '*.jpg'),
                                                        ('png', '*.png'),
                                                        ('pdf', '*.pdf')])
-    for file in all_files:
-        allFiles.append(file)
+    allFiles.extend(all_files)
     f = ""
     for file in allFiles:
-        f = f + "\n" + file
+        f += "\n" + file
     MyLabel1.config(text=f)
 
 def dirMaker():
@@ -25,7 +24,7 @@ def dirMaker():
 
 def cancel():  # canceling operation by remove added files from list
     for i in allFiles:
-        allFiles.remove(i)  ######################## cos nie tak
+        allFiles.remove(i)
     MyLabel1.config(text="")
     entry.delete(0, END)
     entry.insert(0, "please, enter name of the output file here")
